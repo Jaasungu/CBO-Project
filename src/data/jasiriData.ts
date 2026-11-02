@@ -1,0 +1,161 @@
+import { FellowStory, StrategicPillar, ImpactStatistic, InstitutionalPartner } from '../types/jasiri';
+
+export const IMPACT_STATS: ImpactStatistic[] = [
+  {
+    stat: '14,280+',
+    label: 'Young Women Graduated',
+    context: 'Completed intensive 6-month technical & leadership tracks',
+    indicator: 'Verified Cohort Total',
+  },
+  {
+    stat: '89.4%',
+    label: 'Career & Enterprise Placement',
+    context: 'Transitioned into formal tech employment or registered LLC within 180 days',
+    indicator: 'Formal Employment Rate',
+  },
+  {
+    stat: '$5.8M',
+    label: 'Capital Unlocked',
+    context: 'Equity-free catalytic seed grants & institutional debt facilitated',
+    indicator: 'Direct Capital Facilitation',
+  },
+  {
+    stat: '24 Hubs',
+    label: 'County Footprint',
+    context: 'Decentralized rural & urban learning centers across 18 Kenyan counties',
+    indicator: 'Active Infrastructure',
+  },
+];
+
+export const STRATEGIC_PILLARS: StrategicPillar[] = [
+  {
+    id: 'pillar-software-ai',
+    number: '01',
+    title: 'Software Engineering & Applied AI',
+    subtitle: 'Nairobi, Kisumu & Virtual',
+    description: 'Immersion in TypeScript, distributed backend systems, cloud architectures, and responsible AI model deployment in partnership with tier-1 enterprise tech teams.',
+    keyMetric: '92%',
+    keyMetricLabel: 'Technical certification passing rate across global benchmark exams',
+    focusAreas: ['Distributed Cloud Systems', 'Data Pipelines & Machine Learning', 'Mobile-First FinTech Engineering'],
+  },
+  {
+    id: 'pillar-agritech',
+    number: '02',
+    title: 'Agri-Tech & Climate Systems',
+    subtitle: 'Nakuru, Eldoret & Western Kenya',
+    description: 'Empowering young women agronomists and innovators with IoT telemetry, solar-powered precision irrigation control, and climate-resilient crop logistics.',
+    keyMetric: '3.4×',
+    keyMetricLabel: 'Average yield increase reported by smallholders using fellow solutions',
+    focusAreas: ['Solar IoT Sensor Networks', 'Supply Chain Traceability', 'Predictive Weather Micro-Analytics'],
+  },
+  {
+    id: 'pillar-venture',
+    number: '03',
+    title: 'Venture Capital & Executive Leadership',
+    subtitle: 'Pan-African & Global Investor Network',
+    description: 'A 12-week venture readiness lab providing female founders with governance structures, financial modeling, legal frameworks, and direct access to angel syndicates.',
+    keyMetric: '$140K',
+    keyMetricLabel: 'Median first-round institutional pre-seed secured by venture fellows',
+    focusAreas: ['Cap Table & Governance Architecture', 'B2B Sales Funnel Engineering', 'Institutional Due Diligence'],
+  },
+  {
+    id: 'pillar-rural-stem',
+    number: '04',
+    title: 'Decentralized Digital Hubs & Mentorship',
+    subtitle: 'Grassroots Community Access',
+    description: 'High-speed solarized satellite classrooms bringing hardware access, coding basics, and female executive mentorship to public secondary schools in marginalized counties.',
+    keyMetric: '100%',
+    keyMetricLabel: 'Solar energy autonomy across all 24 decentralized rural hubs',
+    focusAreas: ['Hardware & Connectivity Access', 'Secondary School STEM Pipeline', 'Local Community Apprenticeships'],
+  },
+];
+
+export const FELLOW_STORIES: FellowStory[] = [
+  {
+    id: 'story-faith',
+    name: 'Faith Mwende',
+    role: 'Lead Cloud Infrastructure Architect',
+    location: 'Nairobi, Kenya',
+    program: 'Software Engineering & Cloud Architecture',
+    cohort: 'Class of 2024',
+    outcomeMetric: 'Direct Placement at Pan-African FinTech',
+    quote: 'Jasiri gave me rigorous engineering fundamentals that went far beyond basic coding tutorials. Within four months of graduation, I was architecting multi-region cloud services supporting millions of transactions.',
+    fullBio: 'From Machakos County, Faith entered the Jasiri fellowship with a passion for systems engineering. Today, she leads high-availability database migrations at a Nairobi-headquartered payment gateway.',
+    imageUrl: '/src/assets/images/kenya_leadership_fellow_1793635889266.jpg',
+  },
+  {
+    id: 'story-wambui',
+    name: 'Wambui Kariuki',
+    role: 'Founder & CEO, Agri-Link Kenya',
+    location: 'Nakuru County, Kenya',
+    program: 'Agri-Tech & Climate Systems',
+    cohort: 'Class of 2025',
+    outcomeMetric: '1,200 Smallholder Farms Deployed',
+    quote: 'We bridged soil sensor hardware with USSD mobile messaging so smallholder vegetable farmers without smartphones can optimize irrigation schedules during dry seasons.',
+    fullBio: 'Wambui built Agri-Link during her Jasiri venture residency. Her solarized telemetry units have saved over 40 million liters of water across tea and horticulture plots in the Rift Valley.',
+    imageUrl: '/src/assets/images/kenya_agritech_innovator_1793635890497.jpg',
+  },
+  {
+    id: 'story-team',
+    name: 'Grace Achieng & Team CodeSisters',
+    role: 'Distributed Systems Engineers',
+    location: 'Nairobi & Kisumu',
+    program: 'Applied Machine Learning & Open Source',
+    cohort: 'Class of 2025',
+    outcomeMetric: 'Top Open Source Contributor Award',
+    quote: 'The collaborative peer culture at Jasiri changes everything. When young women see peers leading engineering design reviews with absolute authority, self-doubt disappears.',
+    fullBio: 'A multidisciplinary team of fellows who developed an offline Swahili medical NLP model to assist community health volunteers in identifying maternal health warning signs.',
+    imageUrl: '/src/assets/images/kenya_women_tech_fellows_1793635888834.jpg',
+  },
+  {
+    id: 'story-mentors',
+    name: 'Sharon Cherono & Mentorship Circle',
+    role: 'Data Science Instructor & STEM Lead',
+    location: 'Eldoret, Kenya',
+    program: 'Decentralized Digital Hubs',
+    cohort: 'Class of 2024',
+    outcomeMetric: '650+ Secondary School Girls Mentored',
+    quote: 'Bringing high-speed workstations and female engineering role models directly into rural high schools breaks generational ceilings before students even sit for their KCSE exams.',
+    fullBio: 'Sharon directs community data literacy bootcamps in Uasin Gishu county, ensuring young women outside of the capital city have identical access to cutting-edge technical tools.',
+    imageUrl: '/src/assets/images/kenya_stem_workshop_1793635890266.jpg',
+  },
+];
+
+export const INSTITUTIONAL_PARTNERS: InstitutionalPartner[] = [
+  {
+    name: 'Safaricom Foundation',
+    category: 'Enterprise',
+    initiative: 'High-Speed Connectivity & Rural Fiber Hubs',
+    commitment: 'Dedicated 1Gbps fiber lines to 24 county innovation hubs',
+  },
+  {
+    name: 'Mastercard Foundation',
+    category: 'Foundation',
+    initiative: 'Young Africa Works Strategic Grant',
+    commitment: 'Catalytic scholarship funding for 10,000 fellows through 2028',
+  },
+  {
+    name: 'Google.org',
+    category: 'Tech Partner',
+    initiative: 'Applied AI & Cloud Curriculum Certification',
+    commitment: 'Cloud credits, curriculum alignment & senior engineering mentors',
+  },
+  {
+    name: 'Equity Group Foundation',
+    category: 'Enterprise',
+    initiative: 'Zero-Interest Seed Capital & Credit Access',
+    commitment: 'Working capital financing for fellow-founded enterprises',
+  },
+  {
+    name: 'African Development Bank (AfDB)',
+    category: 'Development Bank',
+    initiative: 'Youth Entrepreneurship Investment Bank (YEIB)',
+    commitment: 'Technical audit oversight and regional cross-border scaling',
+  },
+  {
+    name: 'USAID Kenya',
+    category: 'Development Bank',
+    initiative: 'Decentralized Livelihoods & STEM Inclusivity',
+    commitment: 'County-level governance and vocational integration',
+  },
+];
