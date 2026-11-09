@@ -87,8 +87,8 @@ export const JasiriFooter: React.FC = () => {
             <div className="space-y-1">
               <p>
                 <span className="font-semibold text-slate-300">Mobile: </span>
-                <a href="tel:+254728155887" className="hover:text-white transition-colors">
-                  0728155887
+                <a href="tel:+254731546778" className="hover:text-white transition-colors">
+                  +254 731 546778
                 </a>
               </p>
               <p>
