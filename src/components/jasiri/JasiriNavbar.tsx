@@ -97,7 +97,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           </button>
         </div>
 
-        {/* Right: Unified Navigation & DONATE Cluster (Much closer to DONATE than to the logo) */}
+        {/* Right-side navigation and actions */}
         <div className="flex items-center justify-end gap-2 md:gap-5 lg:gap-6 ml-auto">
           {/* Navigation Links directly adjacent to DONATE */}
           <nav
@@ -198,7 +198,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             </button>
           </nav>
 
-          {/* Primary Action Button: DONATE (Immediately after Connect) */}
+          {/* Primary Action Button */}
           <button
             type="button"
             onClick={onDonateClick}
@@ -208,7 +208,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             <span>DONATE</span>
           </button>
 
-          {/* Theme & Design Utilities */}
+          {/* Desktop theme and design utilities */}
           <div className="hidden md:flex items-center gap-1.5 shrink-0 pl-1 border-l border-slate-200 dark:border-slate-800">
             {/* Dark / Light Mode Toggle */}
             <button
