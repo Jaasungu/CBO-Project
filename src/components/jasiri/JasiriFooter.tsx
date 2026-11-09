@@ -1,14 +1,42 @@
 import React from 'react';
 import sheRiseLogo from '../../assets/images/sherise-logo.svg';
+import type { CurrentPage } from './JasiriNavbar';
 
-export const JasiriFooter: React.FC = () => {
+interface JasiriFooterProps {
+  onNavigate: (page: CurrentPage) => void;
+}
+
+export const JasiriFooter: React.FC<JasiriFooterProps> = ({ onNavigate }) => {
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    page: CurrentPage,
+  ) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    onNavigate(page);
+  };
+
   return (
     <footer className="py-16 bg-slate-900 text-white dark:bg-[#050914] border-t border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-800">
           {/* Brand & Mandate */}
           <div className="md:col-span-4 space-y-4">
-            <a href="/" aria-label="SheRise homepage" className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2">
+            <a
+              href="/"
+              onClick={(event) => handleNavigation(event, 'home')}
+              aria-label="SheRise homepage"
+              className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2"
+            >
               <img src={sheRiseLogo} alt="" aria-hidden="true" className="h-8 w-9 object-contain" />
               <span className="font-display-jakarta text-xl font-bold tracking-tight text-[#2D1155]">
                 SheRise
@@ -26,27 +54,27 @@ export const JasiriFooter: React.FC = () => {
             </h5>
             <ul className="space-y-2 text-xs text-slate-300 font-display-jakarta font-semibold">
               <li>
-                <a href="/about/who-we-are" className="hover:text-white transition-colors">
+                <a href="/about/who-we-are" onClick={(event) => handleNavigation(event, 'who-we-are')} className="hover:text-white transition-colors">
                   Who We Are
                 </a>
               </li>
               <li>
-                <a href="/programs" className="hover:text-white transition-colors">
+                <a href="/programs" onClick={(event) => handleNavigation(event, 'programs')} className="hover:text-white transition-colors">
                   Our Programs
                 </a>
               </li>
               <li>
-                <a href="/about/our-story" className="hover:text-white transition-colors">
+                <a href="/about/our-story" onClick={(event) => handleNavigation(event, 'our-story')} className="hover:text-white transition-colors">
                   Our Story
                 </a>
               </li>
               <li>
-                <a href="/about/the-issue-we-address" className="hover:text-white transition-colors">
+                <a href="/about/the-issue-we-address" onClick={(event) => handleNavigation(event, 'issue')} className="hover:text-white transition-colors">
                   The Issue We Address
                 </a>
               </li>
               <li>
-                <a href="/about/our-approach" className="hover:text-white transition-colors">
+                <a href="/about/our-approach" onClick={(event) => handleNavigation(event, 'approach')} className="hover:text-white transition-colors">
                   Our Approach
                 </a>
               </li>

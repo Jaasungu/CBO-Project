@@ -66,6 +66,7 @@ export default function App() {
     if (window.location.pathname !== pagePaths[page]) {
       window.history.pushState({ page }, '', pagePaths[page]);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -169,7 +170,7 @@ export default function App() {
         )}
 
         {/* Footer */}
-        <JasiriFooter />
+        <JasiriFooter onNavigate={navigateToPage} />
       </main>
 
       {/* Interactive Donation & Support Modal */}
