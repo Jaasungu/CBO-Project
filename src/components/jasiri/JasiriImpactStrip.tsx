@@ -1,5 +1,6 @@
 import React from 'react';
 import { AccentChoice } from '../../types/jasiri';
+import communityImage from '../../assets/images/tunu-community-gathering.jpg';
 
 interface JasiriImpactStripProps {
   accent: AccentChoice;
@@ -11,75 +12,52 @@ export const JasiriImpactStrip: React.FC<JasiriImpactStripProps> = ({ accent }) 
       ? 'text-teal-500 dark:text-teal-400'
       : 'text-fuchsia-500 dark:text-fuchsia-400';
 
-  const metrics = [
-    {
-      stat: '14,280+',
-      label: 'Alumni Graduated',
-      context: 'Across all 9 flagship cohorts since 2021',
-      tag: 'VERIFIED ALUMNI',
-    },
-    {
-      stat: '89.4%',
-      label: 'Industry Retention Rate',
-      context: 'Active in formal tech, software, & enterprise careers',
-      tag: 'LONGITUDINAL EMPLOYMENT',
-    },
-    {
-      stat: '120+',
-      label: 'Corporate Partners',
-      context: 'Hiring fellows & sponsoring decentralized labs',
-      tag: 'EMPLOYER ECOSYSTEM',
-    },
-    {
-      stat: '$5.8M+',
-      label: 'Seed Capital Unlocked',
-      context: 'Direct equity-free grants & pre-seed funding for ventures',
-      tag: 'FINANCIAL ACCELERATION',
-    },
+  const aboutParagraphs = [
+    'At HerRise, we believe that every person deserves the opportunity to live a healthy, dignified, and fulfilling life. We believe stronger communities begin when people have access to reliable health information, essential support, and opportunities to participate in shaping their own well-being.',
+    'HerRise was founded on the belief that meaningful change begins within communities. When people are informed, supported, and connected to the right resources, they are better equipped to make informed decisions, overcome challenges, and build brighter futures for themselves and their families.',
+    "Our work is rooted in compassion, collaboration, and the belief that no community should be left behind. We seek to bring people together, raise awareness about important health and social issues, and support community-led solutions that respond to people's real needs.",
+    'Through health, education, community engagement, partnerships, and social welfare initiatives, we aim to contribute to healthier, more informed, inclusive, and resilient communities.',
   ];
 
   return (
     <section
       id="about"
-      className="relative z-20 py-16 bg-[#070D1E] text-white border-b border-slate-800 transition-colors shadow-2xl"
+      className="relative z-20 isolate overflow-hidden py-16 bg-[#070D1E] text-white border-b border-slate-800 transition-colors shadow-2xl"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header Meta */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-800/80">
-          <div className="text-xs font-mono uppercase tracking-widest text-slate-400 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-teal-400 inline-block"></span>
-            <span>2. IMPACT & METRICS GRID · AUDITED 5-YEAR INSTITUTIONAL PROGRESS</span>
+      <img
+        src={communityImage}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-center"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 bg-gradient-to-r from-[#070D1E]/95 via-[#070D1E]/85 to-[#070D1E]/70"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="max-w-4xl">
+          <p className={`text-xs font-mono uppercase tracking-widest mb-3 ${accentTextStyle}`}>
+            About Us
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-display-jakarta">
+            HerRise
+          </h2>
+          <div className="mt-6 space-y-5 text-base sm:text-lg leading-relaxed text-slate-300 font-body-sans">
+            {aboutParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
-          <div className="text-xs text-slate-400 font-mono hidden sm:block">
-            INDEPENDENTLY VERIFIED BY KPMG EAST AFRICA
-          </div>
-        </div>
-
-        {/* High-Contrast Grid with Large-Format Bold Numbers (Prompt 2 requirement) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 divide-y sm:divide-y-0 lg:divide-x divide-slate-800">
-          {metrics.map((item, idx) => (
-            <div
-              key={item.label}
-              className={`flex flex-col justify-between ${idx > 0 ? 'pt-6 sm:pt-0 lg:pl-8' : ''}`}
+          <p className="mt-6 text-right text-xs text-white/70">
+            Photo:{' '}
+            <a
+              href="https://images.unsplash.com/photo-1509099955921-f0b4ed0c175c"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-white"
             >
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-1">
-                  {item.tag}
-                </span>
-                <div
-                  className={`text-4xl sm:text-5xl lg:text-6xl font-black tabular-nums tracking-tight font-mono-code ${accentTextStyle}`}
-                >
-                  {item.stat}
-                </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-2 font-display-jakarta">
-                  {item.label}
-                </div>
-              </div>
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed font-body-sans">
-                {item.context}
-              </p>
-            </div>
-          ))}
+              Unsplash
+            </a>
+          </p>
         </div>
       </div>
     </section>

@@ -1,40 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import { AccentChoice } from './types/jasiri';
 import { ViewportMode } from './types/site';
-import { JasiriNavbar, CurrentPage } from './components/jasiri/JasiriNavbar';
-import { JasiriHero } from './components/jasiri/JasiriHero';
-import { JasiriImpactStrip } from './components/jasiri/JasiriImpactStrip';
-import { JasiriProgramsBento } from './components/jasiri/JasiriProgramsBento';
-import { JasiriPartnerBanner } from './components/jasiri/JasiriPartnerBanner';
-import { JasiriFellowGrid } from './components/jasiri/JasiriFellowGrid';
-import { JasiriApplicationPortal } from './components/jasiri/JasiriApplicationPortal';
-import { JasiriCtaFooterBanner } from './components/jasiri/JasiriCtaFooterBanner';
+import { JasiriNavbar } from './components/jasiri/JasiriNavbar';
+import type { CurrentPage } from './components/jasiri/JasiriNavbar';
+import { TunuHomeCarousel } from './components/jasiri/TunuHomeCarousel';
 import { JasiriFooter } from './components/jasiri/JasiriFooter';
 import { JasiriDesignSystemModal } from './components/jasiri/JasiriDesignSystemModal';
 import { DonationModal } from './components/jasiri/DonationModal';
-import { ProgramsPage } from './components/jasiri/ProgramsPage';
+import { TunuProgramsPage } from './components/jasiri/TunuProgramsPage';
 import { PartnerPage } from './components/jasiri/PartnerPage';
+import { TunuAboutPage } from './components/jasiri/TunuAboutPage';
 import {
   Monitor,
   Tablet,
   Smartphone,
   Sliders,
   Eye,
-  BookOpen,
   Building2,
   Home,
   Heart,
 } from 'lucide-react';
 
+const pagePaths: Record<CurrentPage, string> = {
+  home: '/',
+  programs: '/programs',
+  partner: '/partner',
+  'our-story': '/about/our-story',
+  issue: '/about/the-issue-we-address',
+  approach: '/about/our-approach',
+  'who-we-are': '/about/who-we-are',
+};
+
+const getPageFromPath = (pathname: string): CurrentPage => {
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/';
+  switch (normalizedPath) {
+    case '/programs':
+      return 'programs';
+    case '/partner':
+      return 'partner';
+    case '/about/our-story':
+      return 'our-story';
+    case '/about/the-issue-we-address':
+      return 'issue';
+    case '/about/our-approach':
+      return 'approach';
+    case '/about/who-we-are':
+      return 'who-we-are';
+    default:
+      return 'home';
+  }
+};
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<CurrentPage>('home');
+  const [currentPage, setCurrentPage] = useState<CurrentPage>(() =>
+    getPageFromPath(window.location.pathname),
+  );
   const [accent, setAccent] = useState<AccentChoice>('teal');
   const [isDark, setIsDark] = useState<boolean>(false);
   const [viewportMode, setViewportMode] = useState<ViewportMode>('fluid');
   const [isDesignSystemOpen, setIsDesignSystemOpen] = useState<boolean>(false);
   const [isDonateModalOpen, setIsDonateModalOpen] = useState<boolean>(false);
   const [isFullscreenPreview, setIsFullscreenPreview] = useState<boolean>(false);
-  const [useDummyLogo, setUseDummyLogo] = useState<boolean>(true);
+  const [useTextLogo, setUseTextLogo] = useState<boolean>(false);
+
+  const navigateToPage = (page: CurrentPage) => {
+    setCurrentPage(page);
+    if (window.location.pathname !== pagePaths[page]) {
+      window.history.pushState({ page }, '', pagePaths[page]);
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath(window.location.pathname));
+      window.scrollTo({ top: 0 });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Sync dark class on root documentElement
   useEffect(() => {
@@ -45,20 +89,23 @@ export default function App() {
     }
   }, [isDark]);
 
-  const handleApplyClick = () => {
-    if (currentPage !== 'home') {
-      setCurrentPage('programs');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      const el = document.getElementById('apply');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  useEffect(() => {
+    const aboutTitles: Partial<Record<CurrentPage, string>> = {
+      'our-story': 'Our Story | HerRise',
+      issue: 'The Issue We Address | HerRise',
+      approach: 'Our Approach | HerRise',
+      programs: 'Our Programs | HerRise',
+      'who-we-are': 'Who We Are | HerRise',
+    };
+    document.title = aboutTitles[currentPage] ?? 'HerRise | Nurturing Health. Empowering Communities.';
+  }, [currentPage]);
 
-  const handlePartnerClick = () => {
-    setCurrentPage('partner');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const isTunuContentPage =
+    currentPage === 'programs' ||
+    currentPage === 'our-story' ||
+    currentPage === 'issue' ||
+    currentPage === 'approach' ||
+    currentPage === 'who-we-are';
 
   // Viewport container classes
   const getViewportContainerClasses = () => {
@@ -80,14 +127,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-200/80 dark:bg-slate-950 font-body-sans selection:bg-[#0B132B] selection:text-white dark:selection:bg-teal-400 dark:selection:text-slate-900">
       {/* Studio Top Control Toolbar */}
-      {!isFullscreenPreview ? (
+      {!isFullscreenPreview && !isTunuContentPage ? (
         <div className="sticky top-0 z-50 bg-[#0B132B] text-white border-b border-slate-800 px-4 py-2.5 transition-all shadow-md">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
             {/* Left: App & Page Indicator */}
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 text-xs font-bold tracking-tight bg-slate-800/90 px-3 py-1 rounded-md text-white border border-slate-700/60 font-display-jakarta">
                 <span className={`w-2 h-2 rounded-full ${accent === 'teal' ? 'bg-teal-400' : 'bg-fuchsia-400'}`}></span>
-                <span>Jasiri Kenya · Custom Navigation Active</span>
+                <span>HerRise · Custom Navigation Active</span>
               </div>
 
               {/* Page View Switcher */}
@@ -95,7 +142,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => {
-                    setCurrentPage('home');
+                    navigateToPage('home');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className={`px-2.5 py-1 rounded transition-all flex items-center gap-1 cursor-pointer ${
@@ -110,22 +157,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => {
-                    setCurrentPage('programs');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className={`px-2.5 py-1 rounded transition-all flex items-center gap-1 cursor-pointer ${
-                    currentPage === 'programs'
-                      ? 'bg-slate-800 text-white shadow-xs font-bold'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <BookOpen className="w-3 h-3" />
-                  <span>Our Programs</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCurrentPage('partner');
+                    navigateToPage('partner');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className={`px-2.5 py-1 rounded transition-all flex items-center gap-1 cursor-pointer ${
@@ -196,11 +228,11 @@ export default function App() {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => setUseDummyLogo(!useDummyLogo)}
+                onClick={() => setUseTextLogo(!useTextLogo)}
                 className="px-2.5 py-1.5 text-xs font-semibold rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer"
-                title="Toggle between Dummy Logo and Jasiri Kenya"
+                title="Toggle between the HerRise logo and text mark"
               >
-                {useDummyLogo ? 'Logo: Dummy Mark' : 'Logo: Text Mark'}
+                {useTextLogo ? 'Logo: Text Mark' : 'Logo: HerRise'}
               </button>
 
               <button
@@ -233,7 +265,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : isFullscreenPreview ? (
         <div className="fixed top-4 right-4 z-50">
           <button
             type="button"
@@ -244,74 +276,55 @@ export default function App() {
             <span>Exit Fullscreen</span>
           </button>
         </div>
-      )}
+      ) : null}
 
       {/* Main Website Frame Container */}
       <main className={getViewportContainerClasses()}>
         {/* Homepage Header with user-specified items: About Us, Who We Are, Our Programs, Connect, and DONATE */}
         <JasiriNavbar
           currentPage={currentPage}
-          onNavigate={(page) => setCurrentPage(page)}
+          onNavigate={navigateToPage}
           accent={accent}
           onToggleAccent={setAccent}
           isDark={isDark}
           onToggleDark={() => setIsDark(!isDark)}
           onOpenDesignSystem={() => setIsDesignSystemOpen(true)}
-          onApplyClick={handleApplyClick}
           onDonateClick={() => setIsDonateModalOpen(true)}
-          useDummyLogo={useDummyLogo}
-          onToggleDummyLogo={() => setUseDummyLogo(!useDummyLogo)}
+          useTextLogo={useTextLogo}
+          onToggleLogo={() => setUseTextLogo(!useTextLogo)}
         />
 
         {/* Page Routing */}
         {currentPage === 'home' && (
-          <>
-            {/* 1. Hero Section */}
-            <JasiriHero
-              accent={accent}
-              onApplyClick={handleApplyClick}
-              onPartnerClick={handlePartnerClick}
-            />
-
-            {/* 2. About Us / Impact & Metrics Grid */}
-            <JasiriImpactStrip accent={accent} />
-
-            {/* 3. The Pillars / Programs Section */}
-            <JasiriProgramsBento
-              accent={accent}
-              onApplyClick={handleApplyClick}
-            />
-
-            {/* 4. Partner / Sponsor Banner */}
-            <JasiriPartnerBanner />
-
-            {/* Who We Are: Fellow Stories & Photographic Proof */}
-            <JasiriFellowGrid accent={accent} />
-
-            {/* Connect: Application & Partner Intake Portal */}
-            <JasiriApplicationPortal accent={accent} />
-
-            {/* 5. Call to Action Footer Banner */}
-            <JasiriCtaFooterBanner
-              accent={accent}
-              onPartnerClick={handlePartnerClick}
-            />
-          </>
+          <TunuHomeCarousel
+            accent={accent}
+            onNavigate={(page) => {
+              navigateToPage(page);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
         )}
 
         {currentPage === 'programs' && (
-          <ProgramsPage
+          <TunuProgramsPage
             accent={accent}
-            onNavigateHome={() => setCurrentPage('home')}
-            onNavigatePartner={() => setCurrentPage('partner')}
+            onNavigateHome={() => navigateToPage('home')}
+            onNavigatePartner={() => navigateToPage('partner')}
           />
         )}
 
         {currentPage === 'partner' && (
           <PartnerPage
             accent={accent}
-            onNavigateHome={() => setCurrentPage('home')}
-            onNavigatePrograms={() => setCurrentPage('programs')}
+            onNavigateHome={() => navigateToPage('home')}
+            onNavigatePrograms={() => navigateToPage('programs')}
+          />
+        )}
+
+        {isTunuContentPage && currentPage !== 'programs' && (
+          <TunuAboutPage
+            currentPage={currentPage}
+            onNavigate={(page) => navigateToPage(page)}
           />
         )}
 

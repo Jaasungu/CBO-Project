@@ -1,6 +1,6 @@
 {
-  "name": "Jasiri Kenya - Social Impact Web Design System",
-  "description": "Modern, authoritative, and clean web design system and platform for a Kenyan women empowerment and social impact initiative.",
+  "name": "HerRise",
+  "description": "A community health and social well-being foundation working toward healthier, more informed, inclusive, and resilient communities.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

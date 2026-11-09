@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
+import herRiseLogo from '../../assets/images/herrise-logo.svg';
 
 export const JasiriFooter: React.FC = () => {
   return (
@@ -7,84 +7,104 @@ export const JasiriFooter: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-800">
           {/* Brand & Mandate */}
-          <div className="md:col-span-5 space-y-4">
-            <a href="#" className="text-2xl font-black tracking-tight text-white font-display-jakarta flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-teal-400 inline-block"></span>
-              <span>Jasiri Kenya</span>
+          <div className="md:col-span-4 space-y-4">
+            <a href="/" aria-label="HerRise homepage" className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2">
+              <img src={herRiseLogo} alt="" aria-hidden="true" className="h-8 w-9 object-contain" />
+              <span className="font-display-jakarta text-xl font-bold tracking-tight text-[#2D1155]">
+                HerRise
+              </span>
             </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm font-body-sans">
-              A high-impact social initiative accelerating engineering competence, agri-tech innovation, and venture leadership for young Kenyan women and underrepresented youth.
+              Nurturing Health. Empowering Communities. We work toward healthier, more informed, inclusive, and resilient communities.
             </p>
-            <div className="text-xs text-slate-500 font-mono space-y-1">
-              <div>REG NO: NGO/B/2021/0419 · NON-PROFIT ENTITY (KENYA)</div>
-              <div>AUDITED BY KPMG EAST AFRICA · COMPLIANT WITH PBO ACT</div>
-            </div>
           </div>
 
           {/* Quick Nav */}
-          <div className="md:col-span-3 space-y-3">
+          <div className="md:col-span-2 space-y-3">
             <h5 className="text-xs font-mono uppercase tracking-widest text-slate-400">
-              Navigation
+              Explore
             </h5>
             <ul className="space-y-2 text-xs text-slate-300 font-display-jakarta font-semibold">
               <li>
-                <a href="#impact" className="hover:text-white transition-colors">
-                  Impact & Cohort Metrics
+                <a href="/about/who-we-are" className="hover:text-white transition-colors">
+                  Who We Are
                 </a>
               </li>
               <li>
-                <a href="#pillars" className="hover:text-white transition-colors">
-                  The Four Strategic Pillars
+                <a href="/programs" className="hover:text-white transition-colors">
+                  Our Programs
                 </a>
               </li>
               <li>
-                <a href="#fellows" className="hover:text-white transition-colors">
-                  Fellow Directory & Monograph
+                <a href="/about/our-story" className="hover:text-white transition-colors">
+                  Our Story
                 </a>
               </li>
               <li>
-                <a href="#partners" className="hover:text-white transition-colors">
-                  Corporate & Foundation Alliances
+                <a href="/about/the-issue-we-address" className="hover:text-white transition-colors">
+                  The Issue We Address
                 </a>
               </li>
               <li>
-                <a href="#apply" className="hover:text-white transition-colors">
-                  2026 Admissions & Grants
+                <a href="/about/our-approach" className="hover:text-white transition-colors">
+                  Our Approach
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Locations */}
-          <div className="md:col-span-4 space-y-3 text-xs text-slate-400">
+          {/* Community Commitment */}
+          <div className="md:col-span-3 space-y-3 text-xs text-slate-400">
             <h5 className="text-xs font-mono uppercase tracking-widest text-slate-400">
-              Campus & Regional Hubs
+              How We Work
             </h5>
-            <p className="font-semibold text-slate-200">
-              Nairobi Central Campus: Riverside Drive, Westlands, Nairobi
+            <p className="leading-relaxed">
+              We believe lasting change is built with communities, not simply for them.
             </p>
-            <p>
-              Decentralized Solar Hubs: Nakuru, Kisumu, Eldoret, Mombasa, Machakos, Kilifi, Garissa, and Kakamega.
-            </p>
-            <div className="pt-2 text-slate-300 flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-teal-400" />
-              <a href="mailto:contact@jasirikenya.org" className="hover:underline">
-                contact@jasirikenya.org
-              </a>
+            <div className="flex flex-wrap gap-x-2 gap-y-1 font-semibold text-slate-300">
+              <span>Health education</span>
+              <span aria-hidden="true">·</span>
+              <span>Community engagement</span>
+              <span aria-hidden="true">·</span>
+              <span>Social welfare</span>
+              <span aria-hidden="true">·</span>
+              <span>Partnership</span>
+              <span aria-hidden="true">·</span>
+              <span>Inclusion</span>
+            </div>
+          </div>
+
+          <div className="md:col-span-3 space-y-3 text-xs text-slate-400">
+            <h5 className="text-xs font-mono uppercase tracking-widest text-slate-400">
+              How to Get in Touch
+            </h5>
+            <address className="space-y-1 not-italic leading-relaxed">
+              <p>1st Floor, Camp David House</p>
+              <p>Off Langata Rd, Nairobi</p>
+              <p>Box 1235 - 0100</p>
+              <p>Nairobi, Kenya</p>
+            </address>
+            <div className="space-y-1">
+              <p>
+                <span className="font-semibold text-slate-300">Mobile: </span>
+                <a href="tel:+254728155887" className="hover:text-white transition-colors">
+                  0728155887
+                </a>
+              </p>
+              <p>
+                <span className="font-semibold text-slate-300">Email: </span>
+                <a href="mailto:info@herrise.org" className="hover:text-white transition-colors">
+                  info@herrise.org
+                </a>
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Legal and Disclaimer Bar */}
+        {/* Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Jasiri Social Impact Initiative Kenya. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <span className="hover:text-slate-300 cursor-pointer">Child Safeguarding Policy</span>
-            <span aria-hidden="true">·</span>
-            <span className="hover:text-slate-300 cursor-pointer">Data Privacy & GDPR Kenya</span>
-            <span aria-hidden="true">·</span>
-            <span className="hover:text-slate-300 cursor-pointer">Whistleblower Governance</span>
-          </div>
+          <p>© {new Date().getFullYear()} HerRise. All rights reserved.</p>
+          <p>Nurturing Health. Empowering Communities.</p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AccentChoice } from '../../types/jasiri';
+import herRiseLogo from '../../assets/images/herrise-logo.svg';
 import {
   Sun,
   Moon,
@@ -7,9 +8,23 @@ import {
   Menu,
   X,
   Heart,
+  ChevronDown,
 } from 'lucide-react';
 
-export type CurrentPage = 'home' | 'programs' | 'partner';
+export type CurrentPage =
+  | 'home'
+  | 'programs'
+  | 'partner'
+  | 'our-story'
+  | 'issue'
+  | 'approach'
+  | 'who-we-are';
+
+const aboutPages: { page: CurrentPage; label: string }[] = [
+  { page: 'our-story', label: 'Our Story' },
+  { page: 'issue', label: 'The Issue We Address' },
+  { page: 'approach', label: 'Our Approach' },
+];
 
 interface JasiriNavbarProps {
   currentPage: CurrentPage;
@@ -19,10 +34,9 @@ interface JasiriNavbarProps {
   isDark: boolean;
   onToggleDark: () => void;
   onOpenDesignSystem: () => void;
-  onApplyClick: () => void;
   onDonateClick: () => void;
-  useDummyLogo?: boolean;
-  onToggleDummyLogo?: () => void;
+  useTextLogo?: boolean;
+  onToggleLogo?: () => void;
 }
 
 export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
@@ -33,12 +47,13 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
   isDark,
   onToggleDark,
   onOpenDesignSystem,
-  onApplyClick,
   onDonateClick,
-  useDummyLogo = true,
-  onToggleDummyLogo,
+  useTextLogo = false,
+  onToggleLogo,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [desktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
   const accentBtnStyle =
     accent === 'teal'
@@ -50,23 +65,10 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
       ? 'focus-visible:ring-teal-500 focus-visible:ring-2'
       : 'focus-visible:ring-fuchsia-500 focus-visible:ring-2';
 
-  const scrollToAnchor = (id: string) => {
-    if (currentPage !== 'home') {
-      onNavigate('home');
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#070D1E]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors shadow-xs">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Left: Dummy Logo (Far Left) */}
+        {/* Left: Foundation Logo */}
         <div className="flex items-center shrink-0">
           <button
             type="button"
@@ -77,54 +79,20 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             className="flex items-center gap-3 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-white rounded-xl p-1 text-left"
             aria-label="Homepage"
           >
-            {useDummyLogo ? (
-              <div className="flex items-center gap-2.5">
-                <div className="relative w-9 h-9 rounded-xl bg-slate-950 dark:bg-white flex items-center justify-center shadow-md overflow-hidden shrink-0 group-hover:scale-105 transition-transform">
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 2L3 7V17L12 22L21 17V7L12 2Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-white dark:text-slate-950"
-                    />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="3.5"
-                      className={accent === 'teal' ? 'fill-teal-400' : 'fill-fuchsia-400'}
-                    />
-                    <path
-                      d="M12 2V12"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      className="text-white/60 dark:text-slate-950/60"
-                    />
-                  </svg>
-                </div>
-
-                <div className="flex flex-col leading-none">
-                  <span className="text-lg font-black tracking-widest uppercase font-display-jakarta text-slate-950 dark:text-white">
-                    LOGO
-                  </span>
-                  <span className="text-[9px] font-mono tracking-wider text-slate-400 dark:text-slate-500 uppercase mt-0.5">
-                    YOUR LOGO HERE
-                  </span>
-                </div>
-              </div>
-            ) : (
+            {useTextLogo ? (
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-slate-900 dark:bg-white inline-block"></span>
                 <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 dark:text-white whitespace-nowrap font-display-jakarta">
-                  Jasiri Kenya
+                  HerRise
                 </span>
               </div>
+            ) : (
+              <span className="flex flex-col items-center leading-none">
+                <img src={herRiseLogo} alt="" aria-hidden="true" className="h-10 w-12 object-contain" />
+                <span className="font-display-jakarta text-lg font-bold tracking-tight text-[#2D1155] dark:text-white">
+                  HerRise
+                </span>
+              </span>
             )}
           </button>
         </div>
@@ -136,20 +104,67 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             className="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-semibold text-slate-700 dark:text-slate-300 font-display-jakarta"
             aria-label="Homepage Navigation"
           >
-            {/* 1. About Us */}
-            <button
-              type="button"
-              onClick={() => scrollToAnchor('about')}
-              className={`transition-colors whitespace-nowrap py-1 cursor-pointer focus-visible:outline-none ${accentFocusRing} rounded hover:text-slate-950 dark:hover:text-white`}
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopAboutOpen(true)}
+              onMouseLeave={() => setDesktopAboutOpen(false)}
+              onFocus={() => setDesktopAboutOpen(true)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setDesktopAboutOpen(false);
+                }
+              }}
             >
-              About Us
-            </button>
+              <button
+                type="button"
+                onClick={() => setDesktopAboutOpen(true)}
+                aria-haspopup="true"
+                aria-expanded={desktopAboutOpen}
+                className={`inline-flex items-center gap-1 transition-colors whitespace-nowrap py-1 cursor-pointer focus-visible:outline-none ${accentFocusRing} rounded hover:text-slate-950 dark:hover:text-white`}
+              >
+                About Us
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${desktopAboutOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <div
+                aria-hidden={!desktopAboutOpen}
+                inert={!desktopAboutOpen}
+                className={`absolute left-0 top-full min-w-56 pt-2 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+                  desktopAboutOpen
+                    ? 'translate-y-0 opacity-100'
+                    : 'pointer-events-none -translate-y-1 opacity-0'
+                }`}
+              >
+                <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-700 dark:bg-[#0B142B]">
+                  {aboutPages.map(({ page, label }) => (
+                    <button
+                      key={page}
+                      type="button"
+                      onClick={() => {
+                        setDesktopAboutOpen(false);
+                        onNavigate(page);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="block w-full rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* 2. Who We Are */}
             <button
               type="button"
-              onClick={() => scrollToAnchor('fellows')}
-              className={`transition-colors whitespace-nowrap py-1 cursor-pointer focus-visible:outline-none ${accentFocusRing} rounded hover:text-slate-950 dark:hover:text-white`}
+              onClick={() => {
+                onNavigate('who-we-are');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`transition-colors whitespace-nowrap py-1 cursor-pointer focus-visible:outline-none ${accentFocusRing} rounded hover:text-slate-950 dark:hover:text-white ${
+                currentPage === 'who-we-are'
+                  ? 'text-slate-950 dark:text-white font-extrabold underline underline-offset-4'
+                  : ''
+              }`}
             >
               Who We Are
             </button>
@@ -173,7 +188,10 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             {/* 4. Connect */}
             <button
               type="button"
-              onClick={() => scrollToAnchor('apply')}
+              onClick={() => {
+                onNavigate('partner');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className={`transition-colors whitespace-nowrap py-1 cursor-pointer focus-visible:outline-none ${accentFocusRing} rounded hover:text-slate-950 dark:hover:text-white`}
             >
               Connect
@@ -235,15 +253,15 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           aria-label="Mobile Navigation Menu"
         >
           {/* Logo Option Switcher on Mobile */}
-          {onToggleDummyLogo && (
+          {onToggleLogo && (
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
               <span className="font-bold text-slate-500">Logo Display:</span>
               <button
                 type="button"
-                onClick={onToggleDummyLogo}
+                onClick={onToggleLogo}
                 className="px-3 py-1 rounded-md border border-slate-300 dark:border-slate-700 font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               >
-                {useDummyLogo ? 'Show "Jasiri Kenya"' : 'Show Dummy "LOGO"'}
+                {useTextLogo ? 'Show HerRise Logo' : 'Show Text Mark'}
               </button>
             </div>
           )}
@@ -274,22 +292,49 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           </div>
 
           {/* Navigation Links */}
-          <button
-            type="button"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              scrollToAnchor('about');
-            }}
-            className="block w-full text-left text-base font-bold text-slate-900 dark:text-white py-2 min-h-[44px]"
-          >
-            About Us
-          </button>
+          <div className="border-b border-slate-100 pb-2 dark:border-slate-800">
+            <button
+              type="button"
+              onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+              aria-expanded={mobileAboutOpen}
+              className="flex w-full items-center justify-between text-left text-base font-bold text-slate-900 dark:text-white py-2 min-h-[44px]"
+            >
+              About Us
+              <ChevronDown className={`w-4 h-4 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div
+              aria-hidden={!mobileAboutOpen}
+              inert={!mobileAboutOpen}
+              className={`overflow-hidden pl-4 transition-[max-height,opacity] duration-300 ease-in-out motion-reduce:transition-none ${
+                mobileAboutOpen
+                  ? 'max-h-48 opacity-100'
+                  : 'pointer-events-none max-h-0 opacity-0'
+              }`}
+            >
+              {aboutPages.map(({ page, label }) => (
+                <button
+                  key={page}
+                  type="button"
+                  onClick={() => {
+                    setMobileAboutOpen(false);
+                    onNavigate(page);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.setTimeout(() => setMobileMenuOpen(false), 250);
+                  }}
+                  className="block w-full text-left text-sm text-slate-600 dark:text-slate-300 py-2.5 min-h-[44px]"
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <button
             type="button"
             onClick={() => {
               setMobileMenuOpen(false);
-              scrollToAnchor('fellows');
+              onNavigate('who-we-are');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="block w-full text-left text-base font-bold text-slate-900 dark:text-white py-2 min-h-[44px]"
           >
@@ -312,7 +357,8 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             type="button"
             onClick={() => {
               setMobileMenuOpen(false);
-              scrollToAnchor('apply');
+              onNavigate('partner');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="block w-full text-left text-base font-bold text-slate-900 dark:text-white py-2 min-h-[44px]"
           >

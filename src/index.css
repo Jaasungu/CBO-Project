@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "Space Grotesk", sans-serif;
+  --font-serif: "Space Grotesk", sans-serif;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -8,23 +14,16 @@
 }
 
 /* Custom font utilities */
-.font-display-jakarta {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.font-display-outfit {
-  font-family: 'Outfit', sans-serif;
-}
-
-.font-display-serif {
-  font-family: 'Playfair Display', serif;
-}
-
-.font-body-sans {
-  font-family: 'DM Sans', sans-serif;
+.font-display-jakarta,
+.font-display-oswald,
+.font-display-space-grotesk,
+.font-display-outfit,
+.font-display-serif,
+.font-body-sans,
+.font-mono-code {
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .font-mono-code {
-  font-family: 'JetBrains Mono', monospace;
   font-feature-settings: 'tnum' on, 'lnum' on;
 }

@@ -63,7 +63,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
             </div>
             <div>
               <h3 className="text-xl font-extrabold font-display-jakarta text-slate-950 dark:text-white">
-                Support Jasiri Kenya
+                Support HerRise
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 100% direct student pass-through · Verified by KPMG
