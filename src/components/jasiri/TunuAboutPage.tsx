@@ -40,7 +40,8 @@ const aboutPageContent: Record<
     title: 'Our Approach',
     introduction: 'We believe lasting change is built with communities, not simply for them.',
     paragraphs: [
-      'Promoting access to understandable, reliable health information that supports informed choices and healthier practices.',
+      'Sharing clear, reliable health information so individuals and families can make informed choices and adopt healthier practices.',
+      'Raising awareness of health and social issues, available services, and ways community members can seek support.',
       'Creating opportunities for people to identify challenges, share ideas, and develop locally relevant solutions.',
       'Supporting initiatives that respond to social needs, promote dignity, and connect people with appropriate services and resources.',
       'Working with community groups, local leaders, service providers, and other stakeholders to strengthen collective action.',
@@ -59,7 +60,8 @@ const aboutPageContent: Record<
 };
 
 const approachAreas = [
-  'Health education and awareness',
+  'Health Education',
+  'Awareness',
   'Community engagement',
   'Social welfare and support',
   'Partnership and collaboration',
