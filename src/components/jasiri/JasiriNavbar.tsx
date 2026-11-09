@@ -35,8 +35,6 @@ interface JasiriNavbarProps {
   onToggleDark: () => void;
   onOpenDesignSystem: () => void;
   onDonateClick: () => void;
-  useTextLogo?: boolean;
-  onToggleLogo?: () => void;
 }
 
 export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
@@ -48,8 +46,6 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
   onToggleDark,
   onOpenDesignSystem,
   onDonateClick,
-  useTextLogo = false,
-  onToggleLogo,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
@@ -79,21 +75,12 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             className="flex items-center gap-3 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-white rounded-xl p-1 text-left"
             aria-label="Homepage"
           >
-            {useTextLogo ? (
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-slate-900 dark:bg-white inline-block"></span>
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 dark:text-white whitespace-nowrap font-display-jakarta">
-                  HerRise
-                </span>
-              </div>
-            ) : (
-              <span className="flex flex-col items-center leading-none">
-                <img src={herRiseLogo} alt="" aria-hidden="true" className="h-10 w-12 object-contain" />
-                <span className="font-display-jakarta text-lg font-bold tracking-tight text-[#2D1155] dark:text-white">
-                  HerRise
-                </span>
+            <span className="flex flex-col items-center leading-none">
+              <img src={herRiseLogo} alt="" aria-hidden="true" className="h-10 w-12 object-contain" />
+              <span className="font-display-jakarta text-lg font-bold tracking-tight text-[#2D1155] dark:text-white">
+                HerRise
               </span>
-            )}
+            </span>
           </button>
         </div>
 
@@ -252,20 +239,6 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
         >
-          {/* Logo Option Switcher on Mobile */}
-          {onToggleLogo && (
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
-              <span className="font-bold text-slate-500">Logo Display:</span>
-              <button
-                type="button"
-                onClick={onToggleLogo}
-                className="px-3 py-1 rounded-md border border-slate-300 dark:border-slate-700 font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                {useTextLogo ? 'Show HerRise Logo' : 'Show Text Mark'}
-              </button>
-            </div>
-          )}
-
           <button
             type="button"
             onClick={onToggleDark}
