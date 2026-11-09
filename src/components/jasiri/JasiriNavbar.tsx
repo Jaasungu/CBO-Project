@@ -62,7 +62,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
       : 'focus-visible:ring-fuchsia-500 focus-visible:ring-2';
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#070D1E]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors shadow-xs">
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#111827]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-700 transition-colors shadow-xs">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Left: Foundation Logo */}
         <div className="flex items-center shrink-0">
@@ -234,7 +234,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
       {/* Accessible Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div
-          className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#070D1E] px-6 py-6 space-y-4"
+          className="md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-[#111827] px-6 py-6 space-y-4"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
