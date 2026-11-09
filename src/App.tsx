@@ -9,7 +9,7 @@ import { DonationModal } from './components/jasiri/DonationModal';
 import { TunuProgramsPage } from './components/jasiri/TunuProgramsPage';
 import { PartnerPage } from './components/jasiri/PartnerPage';
 import { TunuAboutPage } from './components/jasiri/TunuAboutPage';
-import herRiseLogo from './assets/images/herrise-logo.svg';
+import sheRiseLogo from './assets/images/sherise-logo.svg';
 
 const pagePaths: Record<CurrentPage, string> = {
   home: '/',
@@ -89,13 +89,13 @@ export default function App() {
 
   useEffect(() => {
     const aboutTitles: Partial<Record<CurrentPage, string>> = {
-      'our-story': 'Our Story | HerRise',
-      issue: 'The Issue We Address | HerRise',
-      approach: 'Our Approach | HerRise',
-      programs: 'Our Programs | HerRise',
-      'who-we-are': 'Who We Are | HerRise',
+      'our-story': 'Our Story | SheRise',
+      issue: 'The Issue We Address | SheRise',
+      approach: 'Our Approach | SheRise',
+      programs: 'Our Programs | SheRise',
+      'who-we-are': 'Who We Are | SheRise',
     };
-    document.title = aboutTitles[currentPage] ?? 'HerRise | Nurturing Health. Empowering Communities.';
+    document.title = aboutTitles[currentPage] ?? 'SheRise | Nurturing Health. Empowering Communities.';
   }, [currentPage]);
 
   const isTunuContentPage =
@@ -111,10 +111,10 @@ export default function App() {
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-[#070D1E] motion-safe:animate-[her-rise-intro-exit_1.5s_ease-in-out_forwards]"
           role="status"
-          aria-label="Loading HerRise"
+          aria-label="Loading SheRise"
         >
           <img
-            src={herRiseLogo}
+            src={sheRiseLogo}
             alt=""
             aria-hidden="true"
             className="h-28 w-28 object-contain motion-safe:animate-[her-rise-logo-pulse_1s_ease-in-out_infinite]"

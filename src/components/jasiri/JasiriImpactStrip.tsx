@@ -13,8 +13,8 @@ export const JasiriImpactStrip: React.FC<JasiriImpactStripProps> = ({ accent }) 
       : 'text-fuchsia-500 dark:text-fuchsia-400';
 
   const aboutParagraphs = [
-    'At HerRise, we believe that every person deserves the opportunity to live a healthy, dignified, and fulfilling life. We believe stronger communities begin when people have access to reliable health information, essential support, and opportunities to participate in shaping their own well-being.',
-    'HerRise was founded on the belief that meaningful change begins within communities. When people are informed, supported, and connected to the right resources, they are better equipped to make informed decisions, overcome challenges, and build brighter futures for themselves and their families.',
+    'At SheRise, we believe that every person deserves the opportunity to live a healthy, dignified, and fulfilling life. We believe stronger communities begin when people have access to reliable health information, essential support, and opportunities to participate in shaping their own well-being.',
+    'SheRise was founded on the belief that meaningful change begins within communities. When people are informed, supported, and connected to the right resources, they are better equipped to make informed decisions, overcome challenges, and build brighter futures for themselves and their families.',
     "Our work is rooted in compassion, collaboration, and the belief that no community should be left behind. We seek to bring people together, raise awareness about important health and social issues, and support community-led solutions that respond to people's real needs.",
     'Through health, education, community engagement, partnerships, and social welfare initiatives, we aim to contribute to healthier, more informed, inclusive, and resilient communities.',
   ];
@@ -40,7 +40,7 @@ export const JasiriImpactStrip: React.FC<JasiriImpactStripProps> = ({ accent }) 
             About Us
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-display-jakarta">
-            HerRise
+            SheRise
           </h2>
           <div className="mt-6 space-y-5 text-base sm:text-lg leading-relaxed text-slate-300 font-body-sans">
             {aboutParagraphs.map((paragraph) => (

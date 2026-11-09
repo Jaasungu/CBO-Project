@@ -23,7 +23,7 @@ const slides: {
   page: CurrentPage;
 }[] = [
   {
-    eyebrow: 'HerRise',
+    eyebrow: 'SheRise',
     title: 'Nurturing Health. Empowering Communities.',
     description:
       'We work toward healthier, more informed communities by connecting people with reliable health information, essential support, and opportunities to shape their well-being.',
@@ -106,7 +106,7 @@ export const TunuHomeCarousel: React.FC<TunuHomeCarouselProps> = ({
 
   return (
     <section
-      aria-label="HerRise overview"
+      aria-label="SheRise overview"
       aria-roledescription="carousel"
       className="relative isolate flex min-h-[calc(100svh-11.5rem)] items-center overflow-hidden bg-[#070D1E] text-white"
       onMouseEnter={() => setIsPaused(true)}

@@ -63,7 +63,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
             </div>
             <div>
               <h3 className="text-xl font-extrabold font-display-jakarta text-slate-950 dark:text-white">
-                Support HerRise
+                Support SheRise
               </h3>
             </div>
           </div>

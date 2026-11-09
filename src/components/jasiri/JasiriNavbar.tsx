@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AccentChoice } from '../../types/jasiri';
-import herRiseLogo from '../../assets/images/herrise-logo.svg';
+import sheRiseLogo from '../../assets/images/sherise-logo.svg';
 import {
   Sun,
   Moon,
@@ -76,9 +76,9 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
             aria-label="Homepage"
           >
             <span className="flex flex-col items-center leading-none">
-              <img src={herRiseLogo} alt="" aria-hidden="true" className="h-10 w-12 object-contain" />
+              <img src={sheRiseLogo} alt="" aria-hidden="true" className="h-10 w-12 object-contain" />
               <span className="font-display-jakarta text-lg font-bold tracking-tight text-[#2D1155] dark:text-white">
-                HerRise
+                SheRise
               </span>
             </span>
           </button>

@@ -19,9 +19,9 @@ const aboutPageContent: Record<
   'our-story': {
     title: 'Our Story',
     introduction:
-      'At HerRise, we believe that every person deserves the opportunity to live a healthy, dignified, and fulfilling life. We believe stronger communities begin when people have access to reliable health information, essential support, and opportunities to participate in shaping their own well-being.',
+      'At SheRise, we believe that every person deserves the opportunity to live a healthy, dignified, and fulfilling life. We believe stronger communities begin when people have access to reliable health information, essential support, and opportunities to participate in shaping their own well-being.',
     paragraphs: [
-      'HerRise was founded on the belief that meaningful change begins within communities. When people are informed, supported, and connected to the right resources, they are better equipped to make informed decisions, overcome challenges, and build brighter futures for themselves and their families.',
+      'SheRise was founded on the belief that meaningful change begins within communities. When people are informed, supported, and connected to the right resources, they are better equipped to make informed decisions, overcome challenges, and build brighter futures for themselves and their families.',
       "Our work is rooted in compassion, collaboration, and the belief that no community should be left behind. We seek to bring people together, raise awareness about important health and social issues, and support community-led solutions that respond to people's real needs.",
       'Through health, education, community engagement, partnerships, and social welfare initiatives, we aim to contribute to healthier, more informed, inclusive, and resilient communities.',
     ],
@@ -33,7 +33,7 @@ const aboutPageContent: Record<
     paragraphs: [
       "Health and social well-being are closely connected. A person's ability to live a healthy life can be influenced by their social and economic circumstances, their access to information, the support available to them, and the opportunities within their community.",
       "Addressing these challenges requires more than individual effort. It calls for collaboration between community members, local leaders, service providers, public institutions, and organisations that share a commitment to improving people's lives.",
-      'HerRise seeks to be part of this response by promoting health awareness, encouraging informed decision-making, strengthening community collaboration, and supporting initiatives that respond to social welfare needs.',
+      'SheRise seeks to be part of this response by promoting health awareness, encouraging informed decision-making, strengthening community collaboration, and supporting initiatives that respond to social welfare needs.',
     ],
   },
   approach: {
@@ -141,7 +141,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-3 lg:grid-cols-12 lg:gap-6">
             <section className="flex flex-col justify-center rounded-3xl border border-white/15 bg-[#070D1E]/70 p-4 shadow-2xl backdrop-blur-md sm:p-7 lg:col-span-5">
               <p className="mb-2 text-[11px] font-mono uppercase tracking-[0.2em] text-teal-300">
-                About HerRise
+                About SheRise
               </p>
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {content.title}
@@ -179,7 +179,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
             </section>
 
             <nav
-              aria-label="Related About HerRise pages"
+              aria-label="Related About SheRise pages"
               className="flex flex-wrap items-center gap-2 lg:col-span-12"
             >
               <span className="mr-1 text-[10px] font-mono uppercase tracking-wider text-slate-300">
@@ -255,7 +255,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
             </section>
 
             <nav
-              aria-label="Related About HerRise pages"
+              aria-label="Related About SheRise pages"
               className="flex flex-wrap items-center gap-2 lg:col-span-12"
             >
               <span className="mr-1 text-[10px] font-mono uppercase tracking-wider text-slate-300">
@@ -329,7 +329,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
             </section>
 
             <nav
-              aria-label="Related About HerRise pages"
+              aria-label="Related About SheRise pages"
               className="flex flex-wrap items-center gap-2 lg:col-span-12"
             >
               <span className="mr-1 text-[10px] font-mono uppercase tracking-wider text-slate-300">
@@ -410,7 +410,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
             </section>
 
             <nav
-              aria-label="Related About HerRise pages"
+              aria-label="Related About SheRise pages"
               className="flex flex-wrap items-center gap-2 lg:col-span-12"
             >
               <span className="mr-1 text-[10px] font-mono uppercase tracking-wider text-slate-300">
@@ -447,7 +447,7 @@ export const TunuAboutPage: React.FC<TunuAboutPageProps> = ({
         ) : (
           <div className="max-w-3xl">
             <p className="mb-2 text-[11px] font-mono uppercase tracking-[0.2em] text-teal-300">
-              About HerRise
+              About SheRise
             </p>
             <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl font-display-jakarta">
               {content.title}

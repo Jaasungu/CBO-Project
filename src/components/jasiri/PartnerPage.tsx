@@ -33,7 +33,7 @@ export const PartnerPage: React.FC<PartnerPageProps> = ({
       title: 'Community members',
       description:
         'Get in touch to learn about our work, share a community need, or explore how to take part in local activities.',
-      linkText: 'Contact HerRise',
+      linkText: 'Contact SheRise',
       subject: 'Community inquiry',
     },
     {
@@ -70,7 +70,7 @@ export const PartnerPage: React.FC<PartnerPageProps> = ({
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 lg:py-20">
         <header className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
           <p className="mb-3 text-[11px] font-mono uppercase tracking-[0.2em] text-teal-300">
-            Connect with HerRise
+            Connect with SheRise
           </p>
           <h1 className="font-display-jakarta text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Let’s build healthier, stronger communities together.
@@ -84,7 +84,7 @@ export const PartnerPage: React.FC<PartnerPageProps> = ({
         </header>
 
         <section
-          aria-label="Ways to connect with HerRise"
+          aria-label="Ways to connect with SheRise"
           className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3"
         >
           {waysToConnect.map(({ icon: Icon, title, description, linkText, subject }) => (
@@ -102,7 +102,7 @@ export const PartnerPage: React.FC<PartnerPageProps> = ({
                 {description}
               </p>
               <a
-                href={`mailto:info@herrise.org?subject=${encodeURIComponent(subject)}`}
+                href={`mailto:info@sherise.org?subject=${encodeURIComponent(subject)}`}
                 className="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-sm font-bold text-teal-300 transition-colors hover:text-teal-200"
               >
                 {linkText}
@@ -126,11 +126,11 @@ export const PartnerPage: React.FC<PartnerPageProps> = ({
                 +254 731 546778
               </a>
               <a
-                href="mailto:info@herrise.org"
+                href="mailto:info@sherise.org"
                 className="flex items-center gap-3 hover:text-white"
               >
                 <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-teal-300" />
-                info@herrise.org
+                info@sherise.org
               </a>
             </div>
           </div>

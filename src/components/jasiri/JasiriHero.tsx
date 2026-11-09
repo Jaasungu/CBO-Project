@@ -36,7 +36,7 @@ export const JasiriHero: React.FC<JasiriHeroProps> = ({
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 sm:py-10 lg:py-12 w-full">
         <div className="max-w-3xl space-y-4 sm:space-y-5">
-          {/* HerRise tagline */}
+          {/* SheRise tagline */}
           <h1
             className="text-4xl sm:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-white leading-[1.08] font-display-jakarta text-balance"
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4.1rem)' }}

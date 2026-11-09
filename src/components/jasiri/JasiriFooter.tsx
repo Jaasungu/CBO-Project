@@ -1,5 +1,5 @@
 import React from 'react';
-import herRiseLogo from '../../assets/images/herrise-logo.svg';
+import sheRiseLogo from '../../assets/images/sherise-logo.svg';
 
 export const JasiriFooter: React.FC = () => {
   return (
@@ -8,10 +8,10 @@ export const JasiriFooter: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-800">
           {/* Brand & Mandate */}
           <div className="md:col-span-4 space-y-4">
-            <a href="/" aria-label="HerRise homepage" className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2">
-              <img src={herRiseLogo} alt="" aria-hidden="true" className="h-8 w-9 object-contain" />
+            <a href="/" aria-label="SheRise homepage" className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2">
+              <img src={sheRiseLogo} alt="" aria-hidden="true" className="h-8 w-9 object-contain" />
               <span className="font-display-jakarta text-xl font-bold tracking-tight text-[#2D1155]">
-                HerRise
+                SheRise
               </span>
             </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm font-body-sans">
@@ -93,8 +93,8 @@ export const JasiriFooter: React.FC = () => {
               </p>
               <p>
                 <span className="font-semibold text-slate-300">Email: </span>
-                <a href="mailto:info@herrise.org" className="hover:text-white transition-colors">
-                  info@herrise.org
+                <a href="mailto:info@sherise.org" className="hover:text-white transition-colors">
+                  info@sherise.org
                 </a>
               </p>
             </div>
@@ -103,7 +103,7 @@ export const JasiriFooter: React.FC = () => {
 
         {/* Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} HerRise. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} SheRise. All rights reserved.</p>
           <p>Nurturing Health. Empowering Communities.</p>
         </div>
       </div>

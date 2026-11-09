@@ -45,7 +45,7 @@ export const JasiriDesignSystemModal: React.FC<JasiriDesignSystemModalProps> = (
             </div>
             <div>
               <h3 className="text-base font-extrabold text-slate-950 dark:text-white font-display-jakarta">
-                HerRise — Web Design System Specification
+                SheRise — Web Design System Specification
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 Authoritative, inspiring, accessible · Social Impact System (Prompt 1)

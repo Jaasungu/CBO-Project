@@ -89,7 +89,7 @@ export const TunuProgramsPage: React.FC<TunuProgramsPageProps> = ({
           </h1>
           <div className="mx-auto my-4 h-1 w-14 rounded-full bg-teal-400" />
           <p className="text-sm leading-relaxed text-slate-200 sm:text-base">
-            HerRise works to improve community health and social
+            SheRise works to improve community health and social
             well-being. Our connected program areas bring people together,
             strengthen access to information and support, and help communities
             shape solutions that respond to their needs.
@@ -97,7 +97,7 @@ export const TunuProgramsPage: React.FC<TunuProgramsPageProps> = ({
         </header>
 
         <section
-          aria-label="HerRise program areas"
+          aria-label="SheRise program areas"
           className="mx-auto grid max-w-5xl gap-3 sm:grid-cols-2 sm:gap-4"
         >
           {programAreas.map(({ title, description, icon: Icon }) => (
