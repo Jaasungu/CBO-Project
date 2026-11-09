@@ -98,7 +98,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
         </div>
 
         {/* Right: Unified Navigation & DONATE Cluster (Much closer to DONATE than to the logo) */}
-        <div className="flex items-center justify-end gap-5 lg:gap-6 ml-auto">
+        <div className="flex items-center justify-end gap-2 md:gap-5 lg:gap-6 ml-auto">
           {/* Navigation Links directly adjacent to DONATE */}
           <nav
             className="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-semibold text-slate-700 dark:text-slate-300 font-display-jakarta"
@@ -202,14 +202,14 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           <button
             type="button"
             onClick={onDonateClick}
-            className={`order-last inline-flex items-center gap-2 px-5 py-2.5 text-xs font-extrabold tracking-wider uppercase rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0 font-display-jakarta cursor-pointer hover:scale-[1.02] md:order-none ${accentBtnStyle}`}
+            className={`order-1 inline-flex items-center gap-2 px-4 py-2.5 text-xs font-extrabold tracking-wider uppercase rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0 font-display-jakarta cursor-pointer hover:scale-[1.02] md:order-none md:px-5 ${accentBtnStyle}`}
           >
             <Heart className="w-3.5 h-3.5 fill-current" />
             <span>DONATE</span>
           </button>
 
           {/* Theme & Design Utilities */}
-          <div className="flex items-center gap-1.5 shrink-0 pl-1 border-l border-slate-200 dark:border-slate-800">
+          <div className="hidden md:flex items-center gap-1.5 shrink-0 pl-1 border-l border-slate-200 dark:border-slate-800">
             {/* Dark / Light Mode Toggle */}
             <button
               type="button"
@@ -235,7 +235,7 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="order-1 md:hidden p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-white min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="order-2 md:hidden p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-white min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
             aria-expanded={mobileMenuOpen}
           >
@@ -265,6 +265,16 @@ export const JasiriNavbar: React.FC<JasiriNavbarProps> = ({
               </button>
             </div>
           )}
+
+          <button
+            type="button"
+            onClick={onToggleDark}
+            className="flex w-full items-center justify-between border-b border-slate-100 pb-3 text-left text-xs font-bold text-slate-700 dark:border-slate-800 dark:text-slate-300"
+            aria-label="Toggle dark mode"
+          >
+            <span>{isDark ? 'Switch to light mode' : 'Switch to dark mode'}</span>
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
 
           {/* Mobile Palette Switcher */}
           <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
