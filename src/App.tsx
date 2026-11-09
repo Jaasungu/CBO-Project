@@ -9,6 +9,8 @@ import { DonationModal } from './components/jasiri/DonationModal';
 import { TunuProgramsPage } from './components/jasiri/TunuProgramsPage';
 import { PartnerPage } from './components/jasiri/PartnerPage';
 import { TunuAboutPage } from './components/jasiri/TunuAboutPage';
+import herRiseLogo from './assets/images/herrise-logo.svg';
+
 const pagePaths: Record<CurrentPage, string> = {
   home: '/',
   programs: '/programs',
@@ -47,6 +49,17 @@ export default function App() {
   const [isDark, setIsDark] = useState<boolean>(false);
   const [isDesignSystemOpen, setIsDesignSystemOpen] = useState<boolean>(false);
   const [isDonateModalOpen, setIsDonateModalOpen] = useState<boolean>(false);
+  const [isIntroVisible, setIsIntroVisible] = useState(true);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsIntroVisible(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => setIsIntroVisible(false), 1500);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   const navigateToPage = (page: CurrentPage) => {
     setCurrentPage(page);
@@ -94,6 +107,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-200/80 dark:bg-slate-950 font-body-sans selection:bg-[#0B132B] selection:text-white dark:selection:bg-teal-400 dark:selection:text-slate-900">
+      {isIntroVisible && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-[#070D1E] motion-safe:animate-[her-rise-intro-exit_1.5s_ease-in-out_forwards]"
+          role="status"
+          aria-label="Loading HerRise"
+        >
+          <img
+            src={herRiseLogo}
+            alt=""
+            aria-hidden="true"
+            className="h-28 w-28 object-contain motion-safe:animate-[her-rise-logo-pulse_1s_ease-in-out_infinite]"
+          />
+        </div>
+      )}
       <main className="w-full min-h-screen bg-white dark:bg-[#070D1E] transition-colors">
         {/* Homepage Header with user-specified items: About Us, Who We Are, Our Programs, Connect, and DONATE */}
         <JasiriNavbar

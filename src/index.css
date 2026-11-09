@@ -13,6 +13,31 @@
   }
 }
 
+@keyframes her-rise-logo-pulse {
+  0%,
+  100% {
+    transform: scale(0.82);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes her-rise-intro-exit {
+  0%,
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* Custom font utilities */
 .font-display-jakarta,
 .font-display-oswald,
